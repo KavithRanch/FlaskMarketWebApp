@@ -10,6 +10,7 @@ Learning Material: https://youtu.be/Qr4QMBUPxWo?si=uhDPh79dkLB_iInH
 ### Running Program
 
 '''
+
 // Setting python file as Flask App to run
 set FLASK_APP=market.py
 
@@ -20,4 +21,5 @@ python -m flask -run
 // Changes can be made and seen without restarting App
 // Once deployed, turn it off
 set FLASK_DEBUG=1
+
 '''
