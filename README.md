@@ -29,6 +29,23 @@ Bootstrap start code: https://getbootstrap.com/docs/5.0/getting-started/introduc
 {{ ... }} <!--Displaying variables or simple expressions (using | "pipe" symbol)-->
 {% ... %} <!--Loops and Conditionals-->
 {% end... %}
+
+
+<!--Template Inheritance allows us to base html code to use for each page-->
+<!--This is done in the base page by adding the following for where we want dynamic content-->
+{% block ____ %}
+{% endblock %}
+
+<!--In the child pages, at we add...-->
+{% extends 'base.html' %} <!--This makes it a child page-->
+{% block ____ %}
+    <!--Whichever content needed goes here-->
+{% endblock %}
+
+
+<!--For nav links, it is best practice to make their href like the following:-->
+<a class="nav-link" href="{{ url_for('[target]_page') }}">[target]</a> 
+<!--Now even if route changes, still points to correct page-->
 ```
 
 ### Backend Code

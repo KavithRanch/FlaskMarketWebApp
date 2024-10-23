@@ -16,7 +16,7 @@ app = Flask(__name__)  # Initializing Flask instance with parameter __name__ (
 # Route URLs for home page
 @app.route('/')
 @app.route('/home')
-def hello_world():
+def home_page():
     return render_template('home.html')  # Pointing to the html home page
 
 
