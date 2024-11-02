@@ -7,6 +7,13 @@ Learning Material: https://youtu.be/Qr4QMBUPxWo?si=uhDPh79dkLB_iInH
 ### Setup
 Flask start code: flask.palletsprojects.com/en/1.1x/quickstart
 
+### Project Structure
+Each module/component should have its own directory
+A directory becomes a package when it includes a __init__ file
+A package can be imported by other modules
+The __init__ file details the package configuration
+
+
 ### Running Program
 
 ```commandline
@@ -20,6 +27,32 @@ set FLASK_DEBUG=1
 
 # Runs app
 python -m flask run
+```
+
+### Database Setup
+
+```python
+# Setting up database and creating model
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///market.db'  # Config so App recognizes its databse
+db = SQLAlchemy(app) # Initializing DB
+class Item(db.Model):
+    ...
+```
+```commandline
+# Imports db and app var
+from market import db, app
+app.app_context.push()
+
+# Create database table (creates db file too)
+db.create_all() 
+
+# Create Item in db
+from market import Item
+item1 = Item(column="____", column=____, ...)
+
+# Save item in db
+db.session.add(item1)
+db.session.commit()
 ```
 
 ### Frontend Code
@@ -71,4 +104,11 @@ def hello_world():
 def hello_world():
     items = ["1", "2", "3"]
     return render_template('home.html', items=items)
+
+# Rendering html page + passing through db table as parameter
+@app.route('/home')
+def hello_world():
+    items = Item.query.all()
+    return render_template('home.html', items=items)
+
 ```
