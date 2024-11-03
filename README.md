@@ -53,6 +53,9 @@ item1 = Item(column="____", column=____, ...)
 # Save item in db
 db.session.add(item1)
 db.session.commit()
+
+# Adding a value to a null key (specifically foreign key which is why we need .id)
+item1.owner = User.query.filter_by(username="Kavith").first().id
 ```
 
 ### Frontend Code
