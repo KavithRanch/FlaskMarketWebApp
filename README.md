@@ -82,6 +82,10 @@ Bootstrap start code: https://getbootstrap.com/docs/5.0/getting-started/introduc
 <!--For nav links, it is best practice to make their href like the following:-->
 <a class="nav-link" href="{{ url_for('[target]_page') }}">[target]</a> 
 <!--Now even if route changes, still points to correct page-->
+
+<!--Rendering form fields with their labels-->
+{{ form.username.label() }}
+{{ form.username(class="form-control", placeholder="Username") }}
 ```
 
 ### Backend Code
@@ -114,4 +118,11 @@ def hello_world():
     items = Item.query.all()
     return render_template('home.html', items=items)
 
+# Creating form schema
+class RegisterForm(FlaskForm):
+    username = StringField(label='Username:')
+    email_address = StringField(label='Email Address:')
+    password = PasswordField(label='Password:')
+    confirm_password = PasswordField(label='Confirm password:')
+    submit = SubmitField(label='Create Account')
 ```
