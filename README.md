@@ -86,6 +86,9 @@ Bootstrap start code: https://getbootstrap.com/docs/5.0/getting-started/introduc
 <!--Rendering form fields with their labels-->
 {{ form.username.label() }}
 {{ form.username(class="form-control", placeholder="Username") }}
+
+<!--Protect against malicious access to post requests-->
+{{ form.hidden_tag() }} 
 ```
 
 ### Backend Code
